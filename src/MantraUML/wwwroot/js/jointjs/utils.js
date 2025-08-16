@@ -26,3 +26,44 @@ function getLongestTextWidth(title, attributes) {
 const getElementByLabel = (label) => {
     return graph.getElements().find(e => e.attributes.attrs['title'].text === label);
 }
+
+function addDefsToSvg() {
+    const svg = paper.svg;
+    let defs = svg.querySelector('defs');
+    const xmlns = "http://www.w3.org/2000/svg";
+
+    let gradient = document.createElementNS(xmlns, 'linearGradient');
+    gradient.setAttribute('id', 'backgroundGradient');
+    gradient.setAttribute('x1', '0%');
+    gradient.setAttribute('y1', '0%');
+    gradient.setAttribute('x2', '100%');
+    gradient.setAttribute('y2', '0%');
+
+    let stop1 = document.createElementNS(xmlns, 'stop');
+    stop1.setAttribute('offset', '0%');
+    stop1.setAttribute('style', 'stop-color:#E5DBCC; stop-opacity:1');
+    gradient.appendChild(stop1);
+
+    let stop2 = document.createElementNS(xmlns, 'stop');
+    stop2.setAttribute('offset', '100%');
+    stop2.setAttribute('style', 'stop-color:#FCF2E3; stop-opacity:1');
+    gradient.appendChild(stop2);
+
+    defs.appendChild(gradient);
+
+    let filter = document.createElementNS(xmlns, 'filter');
+    filter.setAttribute('id', 'shadow');
+    filter.setAttribute('x', '-50%');
+    filter.setAttribute('y', '-50%');
+    filter.setAttribute('width', '200%');
+    filter.setAttribute('height', '200%');
+
+    let feDropShadow = document.createElementNS(xmlns, 'feDropShadow');
+    feDropShadow.setAttribute('dx', '3');
+    feDropShadow.setAttribute('dy', '3');
+    feDropShadow.setAttribute('stdDeviation', '3');
+    feDropShadow.setAttribute('flood-opacity', '0.4');
+    filter.appendChild(feDropShadow);
+
+    defs.appendChild(filter);
+}

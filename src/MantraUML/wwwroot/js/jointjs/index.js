@@ -1,7 +1,7 @@
 ﻿const graph = new joint.dia.Graph();
 
 const paper = new joint.dia.Paper({
-    el: document.getElementById('paper'),
+    el: $('#paper'),
     model: graph,
     defaultLink: () => new BaseLink(),
     linkPinning: false,
@@ -17,3 +17,5 @@ const paper = new joint.dia.Paper({
         return true;
     }
 });
+
+addDefsToSvg();
