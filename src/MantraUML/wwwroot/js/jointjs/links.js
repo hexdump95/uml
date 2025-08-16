@@ -1,7 +1,7 @@
 class BaseLink extends joint.shapes.standard.Link {
     defaults() {
         return joint.util.defaultsDeep({
-            type: 'BaseLink',
+            type: 'mantraUML.BaseLink',
             defaultLabel: {
                 position: {
                     distance: 100,
@@ -39,7 +39,7 @@ const arrowElement = {
 class ArrowLink extends BaseLink {
     defaults() {
         return joint.util.defaultsDeep({
-            type: 'ArrowLink',
+            type: 'mantraUML.ArrowLink',
             attrs: {
                 line: {
                     targetMarker: arrowElement,
@@ -62,7 +62,7 @@ const aggregationElement = {
 class AggregationArrowLink extends ArrowLink {
     defaults() {
         return joint.util.defaultsDeep({
-            type: 'AggregationArrowLink',
+            type: 'mantraUML.AggregationArrowLink',
             attrs: {
                 line: {
                     sourceMarker: aggregationElement,
@@ -75,7 +75,7 @@ class AggregationArrowLink extends ArrowLink {
 class AggregationLink extends BaseLink {
     defaults() {
         return joint.util.defaultsDeep({
-            type: 'AggregationLink',
+            type: 'mantraUML.AggregationLink',
             attrs: {
                 line: {
                     sourceMarker: aggregationElement,
@@ -98,7 +98,7 @@ const compositionElement = {
 class CompositionArrowLink extends ArrowLink {
     defaults() {
         return joint.util.defaultsDeep({
-            type: 'CompositionArrowLink',
+            type: 'mantraUML.CompositionArrowLink',
             attrs: {
                 line: {
                     sourceMarker: compositionElement,
@@ -111,7 +111,7 @@ class CompositionArrowLink extends ArrowLink {
 class CompositionLink extends BaseLink {
     defaults() {
         return joint.util.defaultsDeep({
-            type: 'CompositionLink',
+            type: 'mantraUML.CompositionLink',
             attrs: {
                 line: {
                     sourceMarker: compositionElement,
@@ -124,7 +124,7 @@ class CompositionLink extends BaseLink {
 class DashLink extends BaseLink {
     defaults() {
         return joint.util.defaultsDeep({
-            type: 'DashLink',
+            type: 'mantraUML.DashLink',
             attrs: {
                 line: {
                     strokeDasharray: 6
@@ -137,7 +137,7 @@ class DashLink extends BaseLink {
 class DashArrowLink extends DashLink {
     defaults() {
         return joint.util.defaultsDeep({
-            type: 'DashArrowLink',
+            type: 'mantraUML.DashArrowLink',
             attrs: {
                 line: {
                     targetMarker: arrowElement,
@@ -160,7 +160,7 @@ const triangleElement = {
 class RealizationLink extends DashLink {
     defaults() {
         return joint.util.defaultsDeep({
-            type: 'RealizationLink',
+            type: 'mantraUML.RealizationLink',
             attrs: {
                 line: {
                     targetMarker: triangleElement,
@@ -173,7 +173,7 @@ class RealizationLink extends DashLink {
 class GeneralizationLink extends BaseLink {
     defaults() {
         return joint.util.defaultsDeep({
-            type: 'GeneralizationLink',
+            type: 'mantraUML.GeneralizationLink',
             attrs: {
                 line: {
                     targetMarker: triangleElement,
