@@ -5,6 +5,7 @@ const paper = new joint.dia.Paper({
     model: graph,
     defaultLink: () => new BaseLink(),
     linkPinning: false,
+    snapLinks: {radius: 20},
     validateConnection: function (cellViewS, magnetS, cellViewT, magnetT) {
         if (!magnetS || !magnetT) return false;
 
@@ -94,20 +95,20 @@ function addAttributeField() {
     $('#tbody-attributes').append(html);
 }
 
-paper.on('blank:pointerclick', (a, x, y) => {
-    const type = $('.figure-selected').attr('id');
+let portHighlightedElement;
 
-    switch (type) {
-        case 'class': {
-            currentX = x;
-            currentY = y;
-            $('#field-count').val(0);
-            $('#staticBackdrop').modal('show');
-            break;
-        }
-    }
+function highlightPortsByElement(element) {
+    portHighlightedElement = element;
+    element.getPorts().forEach(p => {
+        element.portProp(p.id, 'attrs/portBody/r', 5);
+    });
+}
 
-});
+function unhighlightPortsByElement(element) {
+    element.getPorts().forEach(p => {
+        element.portProp(p.id, 'attrs/portBody/r', 0);
+    });
+}
 
 function prepareFigure(button) {
     if (!$(button).hasClass('figure-selected')) {

@@ -17,6 +17,15 @@
     height: 100%;
 }
 
+.placeholder-space {
+    border: 1px solid transparent;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .figure-selected {
     box-shadow: 1px 1px 6px #000;
     background-color: #bbb;

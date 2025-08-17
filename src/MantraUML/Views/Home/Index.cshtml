@@ -4,10 +4,46 @@
 }
 <link rel="stylesheet" href="css/joint.css"/>
 
-<div id="icons">
-    <button class="btn-uml" id="class" onclick="prepareFigure(this);">
-        <img src="images/class.svg" alt=""/>
-    </button>
+<div class="d-flex flex-row" id="icons">
+    <div>
+        <button class="btn-uml" id="class" onclick="prepareFigure(this);">
+            <img src="images/class.svg" alt=""/>
+        </button>
+        <button class="btn-uml" id="link" onclick="prepareFigure(this);">
+            <img src="images/link.svg" alt=""/>
+        </button>
+        <button class="btn-uml" id="dashlink" onclick="prepareFigure(this);">
+            <img src="images/dashlink.svg" alt=""/>
+        </button>
+        <button class="btn-uml" id="aggregation" onclick="prepareFigure(this);">
+            <img src="images/aggregation.svg" alt=""/>
+        </button>
+        <button class="btn-uml" id="composition" onclick="prepareFigure(this);">
+            <img src="images/composition.svg" alt=""/>
+        </button>
+
+        <button class="btn-uml" id="generalization" onclick="prepareFigure(this);">
+            <img src="images/generalization.svg" alt=""/>
+        </button>
+        <button class="btn-uml" id="realization" onclick="prepareFigure(this);">
+            <img src="images/realization.svg" alt=""/>
+        </button>
+    </div>
+    <div>
+        <div class="placeholder-space"></div>
+        <button class="btn-uml" id="arrowlink" onclick="prepareFigure(this);">
+            <img src="images/arrowlink.svg" alt=""/>
+        </button>
+        <button class="btn-uml" id="dasharrowlink" onclick="prepareFigure(this);">
+            <img src="images/dasharrowlink.svg" alt=""/>
+        </button>
+        <button class="btn-uml" id="arrowaggregation" onclick="prepareFigure(this);">
+            <img src="images/arrowaggregation.svg" alt=""/>
+        </button>
+        <button class="btn-uml" id="arrowcomposition" onclick="prepareFigure(this);">
+            <img src="images/arrowcomposition.svg" alt=""/>
+        </button>
+    </div>
 </div>
 <div id="paper"></div>
 
@@ -60,5 +96,6 @@
     <script src="js/jointjs/utils.js"></script>
     <script src="js/jointjs/class.js"></script>
     <script src="js/jointjs/index.js"></script>
+    <script src="js/jointjs/events.js"></script>
     <script src="js/jointjs/dummy.js"></script>
 }

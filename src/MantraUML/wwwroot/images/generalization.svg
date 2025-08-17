@@ -1,0 +1,6 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(-60, 15) rotate(-45)" stroke-width="4" stroke="#000">
+        <line x1="0" x2="100" y1="100" y2="100"/>
+        <polygon points="-34,-13 0,0 -34,13" fill="#fff" transform="translate(100,100)"/>
+    </g>
+</svg>

@@ -71,9 +71,9 @@ class Class extends joint.dia.Element {
 
 const portBody = {
     magnet: true,
-    r: 1,
+    r: 0,
     fill: 'rgba(0,0,0,0)',
-    stroke: 'rgba(0,0,0,0)',
+    stroke: 'rgba(0,0,0,0.5)',
     strokeWidth: 1
 }
 
