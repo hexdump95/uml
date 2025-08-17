@@ -63,7 +63,7 @@ paper.on('blank:pointerclick', (a, x, y) => {
 
 });
 
-paper.on('link:connect', (lView, evt, evc) => {
+paper.on('link:connect', (lView, _a, _b) => {
     const link = lView.model;
     link.remove();
 
@@ -117,7 +117,7 @@ paper.on('link:connect', (lView, evt, evc) => {
 
     newLink.source(lView.sourceView.model, {port: link.attributes.source.port});
     newLink.target(lView.targetView.model, {port: link.attributes.target.port});
-    if(lView.sourceView.model === lView.targetView.model) {
+    if (lView.sourceView.model === lView.targetView.model) {
         newLink.router('manhattan');
     }
 

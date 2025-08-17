@@ -66,7 +66,7 @@ function addAttributeField() {
     html += '<tr id="tr-' + index + '">';
 
     html += '<td>';
-    html += '<select class="form-select" aria-label="Default select example" id="visibility-' + index + '">';
+    html += '<select class="form-select" aria-label="Visibility" id="visibility-' + index + '">';
     html += '<option selected value="-">private</option>';
     html += '<option value="+">public</option>';
     html += '<option value="#">protected</option>';
@@ -77,7 +77,7 @@ function addAttributeField() {
     html += '</td>';
 
     html += '<td>';
-    html += '<select class="form-select" aria-label="Default select example" id="type-' + index + '">';
+    html += '<select class="form-select" aria-label="Type" id="type-' + index + '">';
     html += '<option selected value="String">String</option>';
     html += '<option value="Integer">Integer</option>';
     html += '<option value="Long">Long</option>';
