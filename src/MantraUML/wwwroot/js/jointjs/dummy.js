@@ -3,64 +3,64 @@ const dummyData = [
         label: 'Product',
         position: {x: 602, y: 8},
         attributes: [
-            {name: 'id', type: 'Long'},
-            {name: 'name', type: 'String'},
-            {name: 'price', type: 'Double'},
-            {name: 'stock', type: 'Long'},
-            {name: 'createdAt', type: 'Instant'},
-            {name: 'deletedAt', type: 'Instant'},
+            {name: 'id', type: 'Long', visibility: '-'},
+            {name: 'name', type: 'String', visibility: '-'},
+            {name: 'price', type: 'Double', visibility: '-'},
+            {name: 'stock', type: 'Long', visibility: '-'},
+            {name: 'createdAt', type: 'Instant', visibility: '-'},
+            {name: 'deletedAt', type: 'Instant', visibility: '-'},
         ]
     },
     {
         label: 'ProductType',
         position: {x: 850, y: 10},
         attributes: [
-            {name: 'id', type: 'Long'},
-            {name: 'name', type: 'String'},
-            {name: 'createdAt', type: 'Instant'},
-            {name: 'deletedAt', type: 'Instant'},
+            {name: 'id', type: 'Long', visibility: '-'},
+            {name: 'name', type: 'String', visibility: '-'},
+            {name: 'createdAt', type: 'Instant', visibility: '-'},
+            {name: 'deletedAt', type: 'Instant', visibility: '-'},
         ]
     },
     {
         label: 'Order',
         position: {x: 102, y: 36},
         attributes: [
-            {name: 'id', type: 'Long'},
-            {name: 'buyerId', type: 'String'},
-            {name: 'createdAt', type: 'Instant'},
+            {name: 'id', type: 'Long', visibility: '-'},
+            {name: 'buyerId', type: 'String', visibility: '-'},
+            {name: 'createdAt', type: 'Instant', visibility: '-'},
         ]
     },
     {
         label: 'OrderItem',
         position: {x: 357, y: 46},
         attributes: [
-            {name: 'id', type: 'Long'},
-            {name: 'quantity', type: 'Long'},
+            {name: 'id', type: 'Long', visibility: '-'},
+            {name: 'quantity', type: 'Long', visibility: '-'},
         ]
     },
     {
         label: 'OrderStatus',
         position: {x: 101, y: 229},
         attributes: [
-            {name: 'id', type: 'Long'},
-            {name: 'name', type: 'String'},
-            {name: 'createdAt', type: 'Instant'},
-            {name: 'deletedAt', type: 'Instant'},
+            {name: 'id', type: 'Long', visibility: '-'},
+            {name: 'name', type: 'String', visibility: '-'},
+            {name: 'createdAt', type: 'Instant', visibility: '-'},
+            {name: 'deletedAt', type: 'Instant', visibility: '-'},
         ]
     },
     {
         label: 'Cart',
         position: {x: 850, y: 260},
         attributes: [
-            {name: 'buyerId', type: 'String'},
+            {name: 'buyerId', type: 'String', visibility: '-'},
         ]
     },
     {
         label: 'CartItem',
         position: {x: 610, y: 250},
         attributes: [
-            {name: 'id', type: 'String'},
-            {name: 'quantity', type: 'Long'},
+            {name: 'id', type: 'String', visibility: '-'},
+            {name: 'quantity', type: 'Long', visibility: '-'},
         ]
     },
 ];

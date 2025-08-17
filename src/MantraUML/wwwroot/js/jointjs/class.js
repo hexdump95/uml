@@ -16,7 +16,8 @@ class Class extends joint.dia.Element {
                 'body': {
                     width: width,
                     height: height,
-                    fill: '#fff',
+                    fill: 'url(#backgroundGradient)',
+                    filter: 'url(#shadow)',
                     stroke: '#000',
                     strokeWidth: 1,
                 },
@@ -105,7 +106,7 @@ function createFieldAttrs(options) {
             fontFamily: 'Verdana, sans-serif',
             fontSize: 12,
             fill: '#900600',
-            text: '- ' + options.attributes[i - 1].name + ': ' + options.attributes[i - 1].type,
+            text: options.attributes[i - 1].visibility + ' ' + options.attributes[i - 1].name + ': ' + options.attributes[i - 1].type,
         };
     }
 

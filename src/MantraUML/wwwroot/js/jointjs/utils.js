@@ -10,10 +10,10 @@ function getLongestTextWidth(title, attributes) {
     const svg = paper.svg;
 
     const measure = measureText(svg, title, {fontFamily: 'Verdana, sans-serif', fontSize: 13});
-    let maxWidth = measure.width;
+    let maxWidth = measure.width + 20;
 
     attributes.forEach(attr => {
-        const text = '- ' + attr.name + ': ' + attr.type;
+        const text = attr.visibility + ' ' + attr.name + ': ' + attr.type;
         const width = measureText(svg, text, {fontFamily: 'Verdana, sans-serif', fontSize: 12}).width;
         if (width > maxWidth) {
             maxWidth = width;

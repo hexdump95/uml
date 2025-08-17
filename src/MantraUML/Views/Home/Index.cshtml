@@ -4,7 +4,55 @@
 }
 <link rel="stylesheet" href="css/joint.css"/>
 
+<div id="icons">
+    <button class="btn-uml" id="class" onclick="prepareFigure(this);">
+        <img src="images/class.svg" alt=""/>
+    </button>
+</div>
 <div id="paper"></div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Create Class</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="class-name" class="form-label">Class name:</label>
+                    <input type="text" class="form-control" id="class-name" placeholder="MyClass">
+                </div>
+                <input hidden id="field-count" type="number" value="0">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Visibility</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Type</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody-attributes">
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th class="text-center" scope="row" colspan="3">
+                            <button class="btn btn-secondary" onclick="addAttributeField()">Add Attribute</button>
+                        </th>
+                    </tr>
+                    </tfoot>
+                </table>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="submitClass();">Accept</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section Scripts {
     <script src="@jointUrl"></script>

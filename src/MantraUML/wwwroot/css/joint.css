@@ -3,3 +3,21 @@
     width: 29.7cm !important;
     height: 21cm !important;
 }
+
+.btn-uml {
+    border: 1px solid black;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-uml img {
+    height: 100%;
+}
+
+.figure-selected {
+    box-shadow: 1px 1px 6px #000;
+    background-color: #bbb;
+}
