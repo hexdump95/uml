@@ -67,53 +67,8 @@ paper.on('link:connect', (lView, _a, _b) => {
     const link = lView.model;
     link.remove();
 
-    let newLink;
     const type = $('.figure-selected').attr('id');
-    switch (type) {
-        case 'link': {
-            newLink = new BaseLink();
-            break;
-        }
-        case 'dashlink': {
-            newLink = new DashLink();
-            break;
-        }
-        case 'aggregation': {
-            newLink = new AggregationLink();
-            break;
-        }
-        case 'composition': {
-            newLink = new CompositionLink();
-            break;
-        }
-        case 'generalization': {
-            newLink = new GeneralizationLink();
-            break;
-        }
-        case 'realization': {
-            newLink = new RealizationLink();
-            break;
-        }
-        case 'arrowlink': {
-            newLink = new ArrowLink();
-            break;
-        }
-        case 'dasharrowlink': {
-            newLink = new DashArrowLink();
-            break;
-        }
-        case 'arrowaggregation': {
-            newLink = new AggregationArrowLink();
-            break;
-        }
-        case 'arrowcomposition': {
-            newLink = new CompositionArrowLink();
-            break;
-        }
-        default: {
-            newLink = new BaseLink();
-        }
-    }
+    let newLink = LinkFactory.createLink(type);
 
     newLink.source(lView.sourceView.model, {port: link.attributes.source.port});
     newLink.target(lView.targetView.model, {port: link.attributes.target.port});
