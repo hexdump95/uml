@@ -25,6 +25,16 @@ builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.Authority = "http://localhost:8080/realms/uml";
+        options.Audience = "uml";
+        options.RequireHttpsMetadata = false;
+    });
+
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -38,6 +48,8 @@ app.UseHttpsRedirection();
 app.UseCors(cors =>
 {
     cors.AllowAnyOrigin();
+    cors.AllowAnyHeader();
+    cors.AllowAnyMethod();
 });
 
 app.MapControllers();

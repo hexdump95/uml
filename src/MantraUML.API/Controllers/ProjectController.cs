@@ -1,6 +1,8 @@
+using MantraUML.Application.Common.Extensions;
 using MantraUML.Application.Interfaces;
 using MantraUML.Domain.Entities;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MantraUML.API.Controllers;
@@ -17,8 +19,10 @@ public class ProjectController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<ActionResult<IEnumerable<Project>>> Index()
     {
-        return Ok(await _projectService.FindAllAsync());
+        string userId = User.GetUserId();
+        return Ok(await _projectService.FindAllAsyncByUserId(userId));
     }
 }
