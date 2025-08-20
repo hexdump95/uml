@@ -10,5 +10,6 @@ public class AutoMapperProfile : Profile
     public AutoMapperProfile()
     {
         CreateMap<Project, ProjectResponse>();
+        CreateMap<Diagram, DiagramResponse>();
     }
 }

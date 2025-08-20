@@ -1,0 +1,33 @@
+using MantraUML.Domain.Entities;
+using MantraUML.Domain.Interfaces;
+using MantraUML.Infrastructure.Data;
+
+using Microsoft.EntityFrameworkCore;
+
+namespace MantraUML.Infrastructure.Repositories;
+
+public class DiagramRepository : IDiagramRepository
+{
+    private readonly ApplicationDbContext _context;
+
+    public DiagramRepository(ApplicationDbContext context)
+    {
+        _context = context;
+    }
+
+    public Task<IEnumerable<Diagram>> FindAllAsync()
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<IEnumerable<Diagram>> FindAllAsyncByProjectIdAndUserId(Guid projectId, string userId)
+    {
+        return await _context.Diagrams
+            .Include(d => d.Project)
+            .Include(d => d.DiagramType)
+            .Where(d => d.ProjectId == projectId
+                        && d.Project!.UserId == userId
+            )
+            .ToListAsync();
+    }
+}

@@ -20,14 +20,14 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<Project>(project =>
         {
             project.HasKey(p => p.Id);
-            project.HasMany(p => p.Diagrams)
-                .WithOne()
-                .HasForeignKey(d => d.ProjectId)
-                .OnDelete(DeleteBehavior.Cascade);
         });
         modelBuilder.Entity<Diagram>(diagram =>
         {
             diagram.HasKey(d => d.Id);
+            diagram.HasOne(d => d.Project)
+                .WithMany()
+                .HasForeignKey(d => d.ProjectId)
+                .OnDelete(DeleteBehavior.Cascade);
             diagram.HasOne(d => d.DiagramType)
                 .WithMany()
                 .HasForeignKey(d => d.DiagramTypeId);
@@ -100,8 +100,8 @@ public class ApplicationDbContext : DbContext
         //     TargetId = "b9455a64-9cfd-4a3b-a19e-585fcba4998c",
         //     TargetPort = "left-5",
         //     DiagramId = Guid.Parse("4466ec99-6ea4-461e-9bb8-cd37d426bbaa")
-        // });
         //
+        // });
         //
         // modelBuilder.Entity<PortElement>().HasData(
         //     new PortElement { Id = "b9455a64-9cfd-4a3b-a19e-585fcba4998c", Port = "right-5" },
