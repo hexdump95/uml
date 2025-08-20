@@ -16,5 +16,11 @@
     <ProjectReference Include="..\MantraUML.Infrastructure\MantraUML.Infrastructure.csproj" />
     <ProjectReference Include="..\MantraUML.Application\MantraUML.Application.csproj" />
   </ItemGroup>
-
+    
+  <ItemGroup>
+    <Content Include="..\..\.dockerignore">
+      <Link>.dockerignore</Link>
+    </Content>
+  </ItemGroup>
+    
 </Project>
