@@ -1,6 +1,10 @@
 using System.Text.Json;
 
+using MantraUML.Application.Interfaces;
+using MantraUML.Application.Services;
+using MantraUML.Domain.Interfaces;
 using MantraUML.Infrastructure.Data;
+using MantraUML.Infrastructure.Repositories;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +20,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
     opt.UseSqlServer(connectionString)
 );
 
+builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
