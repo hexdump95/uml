@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\MantraUML\MantraUML.csproj" />
+    <ProjectReference Include="..\..\src\MantraUML.API\MantraUML.API.csproj" />
   </ItemGroup>
 
 </Project>

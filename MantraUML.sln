@@ -5,7 +5,15 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MantraUML.Tests", "tests\MantraUML.Tests\MantraUML.Tests.csproj", "{C74485FA-6309-44BE-9587-827A41A2247F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MantraUML", "src\MantraUML\MantraUML.csproj", "{26D1D9A9-4B70-43D0-93C5-255E31B4AC37}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MantraUML.API", "src\MantraUML.API\MantraUML.API.csproj", "{26D1D9A9-4B70-43D0-93C5-255E31B4AC37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MantraUML.Domain", "src\MantraUML.Domain\MantraUML.Domain.csproj", "{DC30D0DE-AF11-4252-B3C3-C589F9A07961}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MantraUML.Infrastructure", "src\MantraUML.Infrastructure\MantraUML.Infrastructure.csproj", "{9F53036F-B918-4329-882D-B622F200D090}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MantraUML.Application", "src\MantraUML.Application\MantraUML.Application.csproj", "{9E13127F-51E0-4126-AF26-E6B7BA1757D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MantraUML.Web", "src\MantraUML.Web\MantraUML.Web.csproj", "{CE5BC98D-C8AF-4CBF-9B2D-17230F725D7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +32,21 @@ Global
 		{26D1D9A9-4B70-43D0-93C5-255E31B4AC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26D1D9A9-4B70-43D0-93C5-255E31B4AC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26D1D9A9-4B70-43D0-93C5-255E31B4AC37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC30D0DE-AF11-4252-B3C3-C589F9A07961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC30D0DE-AF11-4252-B3C3-C589F9A07961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC30D0DE-AF11-4252-B3C3-C589F9A07961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC30D0DE-AF11-4252-B3C3-C589F9A07961}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F53036F-B918-4329-882D-B622F200D090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F53036F-B918-4329-882D-B622F200D090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F53036F-B918-4329-882D-B622F200D090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F53036F-B918-4329-882D-B622F200D090}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E13127F-51E0-4126-AF26-E6B7BA1757D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E13127F-51E0-4126-AF26-E6B7BA1757D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E13127F-51E0-4126-AF26-E6B7BA1757D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E13127F-51E0-4126-AF26-E6B7BA1757D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE5BC98D-C8AF-4CBF-9B2D-17230F725D7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE5BC98D-C8AF-4CBF-9B2D-17230F725D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE5BC98D-C8AF-4CBF-9B2D-17230F725D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE5BC98D-C8AF-4CBF-9B2D-17230F725D7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
