@@ -15,9 +15,15 @@ public class ProjectRepository : IProjectRepository
         _context = context;
     }
 
-    public async Task<IEnumerable<Project>> FindAllAsync()
+    public Task<IEnumerable<Project>> FindAllAsync()
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<IEnumerable<Project>> FindAllAsyncByUserId(string userId)
     {
         return await _context.Projects
+            .Where(p => p.UserId == userId)
             .ToListAsync();
     }
 }

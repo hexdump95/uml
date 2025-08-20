@@ -4,5 +4,5 @@ namespace MantraUML.Application.Interfaces;
 
 public interface IProjectService
 {
-    Task<IEnumerable<Project>> FindAllAsync();
+    Task<IEnumerable<Project>> FindAllAsyncByUserId(string userId);
 }

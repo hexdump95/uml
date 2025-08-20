@@ -1,5 +1,3 @@
-using AutoMapper;
-
 using MantraUML.Application.Interfaces;
 using MantraUML.Domain.Entities;
 using MantraUML.Domain.Interfaces;
@@ -15,8 +13,8 @@ public class ProjectService : IProjectService
         _projectRepository = projectRepository;
     }
 
-    public async Task<IEnumerable<Project>> FindAllAsync()
+    public async Task<IEnumerable<Project>> FindAllAsyncByUserId(string userId)
     {
-        return await _projectRepository.FindAllAsync();
+        return await _projectRepository.FindAllAsyncByUserId(userId);
     }
 }

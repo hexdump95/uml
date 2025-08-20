@@ -28,8 +28,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
     {
-        options.Authority = "http://localhost:8080/realms/uml";
-        options.Audience = "uml";
+        options.Authority = builder.Configuration["AuthService:Authority"];
+        options.Audience = builder.Configuration["AuthService:Audience"];
         options.RequireHttpsMetadata = false;
     });
 
