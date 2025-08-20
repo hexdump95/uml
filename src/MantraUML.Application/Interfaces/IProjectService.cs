@@ -1,8 +1,8 @@
-using MantraUML.Domain.Entities;
+using MantraUML.Application.Dtos;
 
 namespace MantraUML.Application.Interfaces;
 
 public interface IProjectService
 {
-    Task<IEnumerable<Project>> FindAllAsyncByUserId(string userId);
+    Task<IEnumerable<ProjectResponse>> FindAllAsyncByUserId(string userId);
 }

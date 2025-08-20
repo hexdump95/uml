@@ -1,6 +1,7 @@
 using System.Text.Json;
 
 using MantraUML.Application.Interfaces;
+using MantraUML.Application.Profiles;
 using MantraUML.Application.Services;
 using MantraUML.Domain.Interfaces;
 using MantraUML.Infrastructure.Data;
@@ -24,6 +25,7 @@ builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(cfg => cfg.AddProfile(typeof(AutoMapperProfile)));
 
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
