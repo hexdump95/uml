@@ -23,4 +23,10 @@ public class DiagramService : IDiagramService
         var diagrams = await _diagramRepository.FindAllAsyncByProjectIdAndUserId(projectId, userId);
         return _mapper.Map<List<Diagram>, List<DiagramResponse>>(diagrams.ToList());
     }
+
+    public async Task<DiagramDetailResponse> FindOneAsyncByIdAndUserId(Guid diagramId, string userId)
+    {
+        var diagram = await _diagramRepository.FindOneAsyncByIdAndUserId(diagramId, userId);
+        return _mapper.Map<Diagram, DiagramDetailResponse>(diagram!);
+    }
 }

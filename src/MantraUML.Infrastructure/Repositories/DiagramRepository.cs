@@ -30,4 +30,14 @@ public class DiagramRepository : IDiagramRepository
             )
             .ToListAsync();
     }
+
+    public async Task<Diagram?> FindOneAsyncByIdAndUserId(Guid diagramId, string userId)
+    {
+        return await _context.Diagrams
+            .Include(d => d.Project)
+            .Include(d => d.DiagramType)
+            .Include(d => d.Elements)
+            .Where(d => d.Id == diagramId && d.Project!.UserId == userId)
+            .FirstOrDefaultAsync();
+    }
 }

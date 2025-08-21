@@ -1,5 +1,3 @@
-using AutoMapper;
-
 using MantraUML.Application.Common.Extensions;
 using MantraUML.Application.Dtos;
 using MantraUML.Application.Interfaces;
@@ -30,14 +28,20 @@ public class ProjectController : ControllerBase
         return Ok(await _projectService.FindAllAsyncByUserId(userId));
     }
 
+    [HttpGet("diagrams/{diagramId}")]
+    public async Task<ActionResult<DiagramDetailResponse>> GetDiagramById(Guid diagramId)
+    {
+        string userId = User.GetUserId();
+        return Ok(await _diagramService.FindOneAsyncByIdAndUserId(diagramId, userId));
+    }
+    
     [HttpGet("{projectId}/diagrams")]
     [Authorize]
-    public async Task<ActionResult<IEnumerable<DiagramResponse>>> GetDiagramsByProjectId(
-        Guid projectId
-    )
+    public async Task<ActionResult<IEnumerable<DiagramResponse>>> GetDiagramsByProjectId(Guid projectId)
     {
         string userId = User.GetUserId();
         var diagrams = await _diagramService.FindAllAsyncByProjectIdAndUserId(projectId, userId);
         return Ok(diagrams);
     }
+
 }
