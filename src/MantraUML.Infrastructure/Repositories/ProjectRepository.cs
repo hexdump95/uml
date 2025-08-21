@@ -20,6 +20,11 @@ public class ProjectRepository : IProjectRepository
         throw new NotImplementedException();
     }
 
+    public async Task<Project?> FindOneByIdAsync(Guid id)
+    {
+        return await _context.FindAsync<Project>(id);
+    }
+
     public async Task<IEnumerable<Project>> FindAllAsyncByUserId(string userId)
     {
         return await _context.Projects

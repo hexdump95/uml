@@ -24,4 +24,15 @@ public class ProjectService : IProjectService
         List<ProjectResponse> response = _mapper.Map<List<Project>, List<ProjectResponse>>((await projects).ToList());
         return response;
     }
+
+    public async Task<ProjectResponse> FindOneAsyncByIdAndUserId(Guid id, string userId)
+    {
+        var project = await _projectRepository.FindOneByIdAsync(id);
+        if (project != null && project.UserId == userId)
+        {
+            return _mapper.Map<Project, ProjectResponse>(project);
+        }
+
+        return new ProjectResponse();
+    }
 }

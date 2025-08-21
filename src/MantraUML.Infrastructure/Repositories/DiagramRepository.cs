@@ -20,6 +20,11 @@ public class DiagramRepository : IDiagramRepository
         throw new NotImplementedException();
     }
 
+    public Task<Diagram?> FindOneByIdAsync(Guid id)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<IEnumerable<Diagram>> FindAllAsyncByProjectIdAndUserId(Guid projectId, string userId)
     {
         return await _context.Diagrams
