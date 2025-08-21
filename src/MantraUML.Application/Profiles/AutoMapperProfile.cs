@@ -38,7 +38,11 @@ public class AutoMapperProfile : Profile
                     opt.MapFrom(src => src.PositionY))
             ;
 
-        CreateMap<Link, LinkResponse>();
+        CreateMap<Link, LinkResponse>()
+            .ForMember(dest => dest.Cardinalities,
+                opt =>
+                    opt.MapFrom(src => DeserializeToCardinalityResponse(src.Cardinalities!))
+            );
 
         CreateMap<Diagram, DiagramDetailResponse>()
             .ForMember(dest => dest.Classes,
@@ -53,5 +57,10 @@ public class AutoMapperProfile : Profile
     private List<AttributeResponse> DeserializeToAttributeResponse(string src)
     {
         return JsonSerializer.Deserialize<List<AttributeResponse>>(src)!;
+    }
+
+    private List<CardinalityResponse> DeserializeToCardinalityResponse(string src)
+    {
+        return JsonSerializer.Deserialize<List<CardinalityResponse>>(src)!;
     }
 }
