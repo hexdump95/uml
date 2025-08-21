@@ -9,6 +9,7 @@ namespace MantraUML.API.Controllers;
 
 [Route("/api/v1/projects")]
 [ApiController]
+[Authorize]
 public class ProjectController : ControllerBase
 {
     private readonly IProjectService _projectService;
@@ -21,27 +22,39 @@ public class ProjectController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize]
     public async Task<ActionResult<IEnumerable<ProjectResponse>>> GetProjects()
     {
-        string userId = User.GetUserId();
+        var userId = User.GetUserId();
         return Ok(await _projectService.FindAllAsyncByUserId(userId));
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<IEnumerable<ProjectResponse>>> GetProjectById(Guid id)
+    {
+        var userId = User.GetUserId();
+        return Ok(await _projectService.FindOneAsyncByIdAndUserId(id, userId));
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<IEnumerable<ProjectResponse>>> CreateProject([FromBody] ProjectRequest request)
+    {
+        var userId = User.GetUserId();
+        var projectResponse = await _projectService.CreateProject(request, userId);
+        return CreatedAtAction(nameof(GetProjectById), new { id = projectResponse.Id }, projectResponse);
     }
 
     [HttpGet("diagrams/{diagramId}")]
     public async Task<ActionResult<DiagramDetailResponse>> GetDiagramById(Guid diagramId)
     {
-        string userId = User.GetUserId();
+        var userId = User.GetUserId();
         return Ok(await _diagramService.FindOneAsyncByIdAndUserId(diagramId, userId));
     }
-    
+
     [HttpGet("{projectId}/diagrams")]
-    [Authorize]
     public async Task<ActionResult<IEnumerable<DiagramResponse>>> GetDiagramsByProjectId(Guid projectId)
     {
-        string userId = User.GetUserId();
+        var userId = User.GetUserId();
         var diagrams = await _diagramService.FindAllAsyncByProjectIdAndUserId(projectId, userId);
         return Ok(diagrams);
     }
-
 }

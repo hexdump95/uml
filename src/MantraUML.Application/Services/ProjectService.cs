@@ -35,4 +35,12 @@ public class ProjectService : IProjectService
 
         return new ProjectResponse();
     }
+
+    public async Task<ProjectResponse> CreateProject(ProjectRequest request, string userId)
+    {
+        var project = _mapper.Map<ProjectRequest, Project>(request);
+        project.UserId = userId;
+        project = await _projectRepository.SaveAsync(project);
+        return _mapper.Map<Project, ProjectResponse>(project);
+    }
 }

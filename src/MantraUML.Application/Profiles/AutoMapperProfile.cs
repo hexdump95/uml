@@ -52,6 +52,10 @@ public class AutoMapperProfile : Profile
                 opt =>
                     opt.MapFrom(src => src.Elements.Where(e => e is Link).ToList())
             );
+
+        CreateMap<ProjectRequest, Project>();
+
+        CreateMap<Project, ProjectResponse>();
     }
 
     private List<AttributeResponse> DeserializeToAttributeResponse(string src)
