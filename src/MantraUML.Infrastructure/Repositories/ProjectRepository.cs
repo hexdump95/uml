@@ -35,6 +35,7 @@ public class ProjectRepository : IProjectRepository
     public async Task<IEnumerable<Project>> FindAllAsyncByUserId(string userId)
     {
         return await _context.Projects
+            .Include(p => p.Diagrams)
             .Where(p => p.UserId == userId)
             .ToListAsync();
     }

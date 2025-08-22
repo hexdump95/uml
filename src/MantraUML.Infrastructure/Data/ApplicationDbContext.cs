@@ -25,7 +25,7 @@ public class ApplicationDbContext : DbContext
         {
             diagram.HasKey(d => d.Id);
             diagram.HasOne(d => d.Project)
-                .WithMany()
+                .WithMany(p => p.Diagrams)
                 .HasForeignKey(d => d.ProjectId)
                 .OnDelete(DeleteBehavior.Cascade);
             diagram.HasOne(d => d.DiagramType)

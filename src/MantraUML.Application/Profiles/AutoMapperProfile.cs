@@ -55,7 +55,9 @@ public class AutoMapperProfile : Profile
 
         CreateMap<ProjectRequest, Project>();
 
-        CreateMap<Project, ProjectResponse>();
+        CreateMap<Project, ProjectResponse>()
+            .ForMember(dest => dest.HasDiagrams,
+                opt => opt.MapFrom(src => src.Diagrams.Any()));
     }
 
     private List<AttributeResponse> DeserializeToAttributeResponse(string src)
