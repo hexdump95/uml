@@ -36,6 +36,19 @@ public class ProjectService : IProjectService
         return new ProjectResponse();
     }
 
+    public async Task<ProjectResponse> UpdateProjectNameByIdAndUserId(Guid id, string userId, ProjectRequest request)
+    {
+        var project = await _projectRepository.FindOneByIdAsync(id);
+        if (project != null && project.UserId == userId)
+        {
+            project.Name = request.Name;
+            await _projectRepository.SaveChangesAsync();
+            return _mapper.Map<Project, ProjectResponse>(project);
+        }
+
+        return new ProjectResponse();
+    }
+
     public async Task<ProjectWithDiagramsResponse> FindOneWithDiagramsByIdAndUserId(Guid id, string userId)
     {
         var project = await _projectRepository.FindOneByIdWithDiagramsAsync(id);

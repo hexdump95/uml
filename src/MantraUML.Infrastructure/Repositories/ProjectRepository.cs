@@ -32,6 +32,11 @@ public class ProjectRepository : IProjectRepository
         return await _context.FindAsync<Project>(id);
     }
 
+    public virtual async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        return await _context.SaveChangesAsync(cancellationToken);
+    }
+
     public async Task<Project?> FindOneByIdWithDiagramsAsync(Guid id)
     {
         return await _context.Projects

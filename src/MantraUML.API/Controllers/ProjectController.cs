@@ -43,6 +43,14 @@ public class ProjectController : ControllerBase
         return CreatedAtAction(nameof(GetProjectById), new { id = projectResponse.Id }, projectResponse);
     }
 
+    [HttpPatch("{id}")]
+    public async Task<ActionResult<IEnumerable<ProjectResponse>>> UpdateProjectName(Guid id,
+        [FromBody] ProjectRequest request)
+    {
+        var userId = User.GetUserId();
+        return Ok(await _projectService.UpdateProjectNameByIdAndUserId(id, userId, request));
+    }
+
     [HttpGet("diagrams/{diagramId}")]
     public async Task<ActionResult<DiagramDetailResponse>> GetDiagramById(Guid diagramId)
     {
