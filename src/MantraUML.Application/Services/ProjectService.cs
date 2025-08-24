@@ -64,6 +64,8 @@ public class ProjectService : IProjectService
     {
         var project = _mapper.Map<ProjectRequest, Project>(request);
         project.UserId = userId;
+        project.CreatedAt = DateTime.UtcNow;
+        project.UpdatedAt = project.CreatedAt;
         project = await _projectRepository.SaveAsync(project);
         return _mapper.Map<Project, ProjectResponse>(project);
     }
