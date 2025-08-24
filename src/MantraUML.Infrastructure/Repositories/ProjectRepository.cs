@@ -32,7 +32,15 @@ public class ProjectRepository : IProjectRepository
         return await _context.FindAsync<Project>(id);
     }
 
-    public async Task<IEnumerable<Project>> FindAllAsyncByUserId(string userId)
+    public async Task<Project?> FindOneByIdWithDiagramsAsync(Guid id)
+    {
+        return await _context.Projects
+            .Include(p => p.Diagrams)
+            .ThenInclude(d => d.DiagramType)
+            .FirstOrDefaultAsync(p => p.Id == id);
+    }
+
+    public async Task<IEnumerable<Project>> FindAllByUserIdAsync(string userId)
     {
         return await _context.Projects
             .Include(p => p.Diagrams)

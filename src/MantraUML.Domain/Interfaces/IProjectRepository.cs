@@ -4,5 +4,6 @@ namespace MantraUML.Domain.Interfaces;
 
 public interface IProjectRepository : IRepository<Project, Guid>
 {
-    Task<IEnumerable<Project>> FindAllAsyncByUserId(string userId);
+    Task<Project?> FindOneByIdWithDiagramsAsync(Guid id);
+    Task<IEnumerable<Project>> FindAllByUserIdAsync(string userId);
 }

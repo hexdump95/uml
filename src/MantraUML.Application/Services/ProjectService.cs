@@ -18,14 +18,14 @@ public class ProjectService : IProjectService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<ProjectResponse>> FindAllAsyncByUserId(string userId)
+    public async Task<IEnumerable<ProjectResponse>> FindAllByUserId(string userId)
     {
-        var projects = _projectRepository.FindAllAsyncByUserId(userId);
+        var projects = _projectRepository.FindAllByUserIdAsync(userId);
         List<ProjectResponse> response = _mapper.Map<List<Project>, List<ProjectResponse>>((await projects).ToList());
         return response;
     }
 
-    public async Task<ProjectResponse> FindOneAsyncByIdAndUserId(Guid id, string userId)
+    public async Task<ProjectResponse> FindOneByIdAndUserId(Guid id, string userId)
     {
         var project = await _projectRepository.FindOneByIdAsync(id);
         if (project != null && project.UserId == userId)
@@ -34,6 +34,17 @@ public class ProjectService : IProjectService
         }
 
         return new ProjectResponse();
+    }
+
+    public async Task<ProjectWithDiagramsResponse> FindOneWithDiagramsByIdAndUserId(Guid id, string userId)
+    {
+        var project = await _projectRepository.FindOneByIdWithDiagramsAsync(id);
+        if (project != null && project.UserId == userId)
+        {
+            return _mapper.Map<Project, ProjectWithDiagramsResponse>(project);
+        }
+
+        return new ProjectWithDiagramsResponse();
     }
 
     public async Task<ProjectResponse> CreateProject(ProjectRequest request, string userId)

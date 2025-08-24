@@ -25,14 +25,14 @@ public class ProjectController : ControllerBase
     public async Task<ActionResult<IEnumerable<ProjectResponse>>> GetProjects()
     {
         var userId = User.GetUserId();
-        return Ok(await _projectService.FindAllAsyncByUserId(userId));
+        return Ok(await _projectService.FindAllByUserId(userId));
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<IEnumerable<ProjectResponse>>> GetProjectById(Guid id)
     {
         var userId = User.GetUserId();
-        return Ok(await _projectService.FindOneAsyncByIdAndUserId(id, userId));
+        return Ok(await _projectService.FindOneByIdAndUserId(id, userId));
     }
 
     [HttpPost]
@@ -47,14 +47,14 @@ public class ProjectController : ControllerBase
     public async Task<ActionResult<DiagramDetailResponse>> GetDiagramById(Guid diagramId)
     {
         var userId = User.GetUserId();
-        return Ok(await _diagramService.FindOneAsyncByIdAndUserId(diagramId, userId));
+        return Ok(await _diagramService.FindOneByIdAndUserId(diagramId, userId));
     }
 
     [HttpGet("{projectId}/diagrams")]
-    public async Task<ActionResult<IEnumerable<DiagramResponse>>> GetDiagramsByProjectId(Guid projectId)
+    public async Task<ActionResult<IEnumerable<ProjectWithDiagramsResponse>>> GetProjectWithDiagrams(Guid projectId)
     {
         var userId = User.GetUserId();
-        var diagrams = await _diagramService.FindAllAsyncByProjectIdAndUserId(projectId, userId);
-        return Ok(diagrams);
+        var project = await _projectService.FindOneWithDiagramsByIdAndUserId(projectId, userId);
+        return Ok(project);
     }
 }

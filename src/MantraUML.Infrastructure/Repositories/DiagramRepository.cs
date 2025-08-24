@@ -30,18 +30,7 @@ public class DiagramRepository : IDiagramRepository
         throw new NotImplementedException();
     }
 
-    public async Task<IEnumerable<Diagram>> FindAllAsyncByProjectIdAndUserId(Guid projectId, string userId)
-    {
-        return await _context.Diagrams
-            .Include(d => d.Project)
-            .Include(d => d.DiagramType)
-            .Where(d => d.ProjectId == projectId
-                        && d.Project!.UserId == userId
-            )
-            .ToListAsync();
-    }
-
-    public async Task<Diagram?> FindOneAsyncByIdAndUserId(Guid diagramId, string userId)
+    public async Task<Diagram?> FindOneByIdAndUserIdAsync(Guid diagramId, string userId)
     {
         return await _context.Diagrams
             .Include(d => d.Project)
