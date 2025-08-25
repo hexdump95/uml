@@ -25,9 +25,12 @@ public class DiagramRepository : IDiagramRepository
         throw new NotImplementedException();
     }
 
-    public Task<Diagram> SaveAsync(Diagram entity)
+    public async Task<Diagram> SaveAsync(Diagram entity)
     {
-        throw new NotImplementedException();
+        await _context.Diagrams.AddAsync(entity);
+        await _context.SaveChangesAsync();
+        return await _context.Diagrams.Include(d => d.DiagramType)
+            .FirstAsync(d => d.Id == entity.Id);
     }
 
     public async Task<Diagram?> FindOneByIdAndUserIdAsync(Guid diagramId, string userId)

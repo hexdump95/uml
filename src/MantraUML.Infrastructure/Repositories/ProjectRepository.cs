@@ -52,4 +52,10 @@ public class ProjectRepository : IProjectRepository
             .Where(p => p.UserId == userId)
             .ToListAsync();
     }
+
+    public async Task<bool> ValidateProject(Guid id, string userId)
+    {
+        return await _context.Projects
+            .AnyAsync(p => p.Id == id && p.UserId == userId);
+    }
 }

@@ -76,4 +76,13 @@ public class ProjectController : ControllerBase
         var project = await _projectService.FindOneWithDiagramsByIdAndUserId(projectId, userId);
         return Ok(project);
     }
+
+    [HttpPost("{projectId}/diagrams")]
+    public async Task<ActionResult<DiagramResponse>> CreateDiagramByProjectId(Guid projectId,
+        [FromBody] DiagramRequest request)
+    {
+        var userId = User.GetUserId();
+        var diagram = await _diagramService.CreateDiagramByProjectId(projectId, userId, request);
+        return Ok(diagram);
+    }
 }
