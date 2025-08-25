@@ -1,3 +1,5 @@
+using AutoMapper;
+
 using MantraUML.Application.Common.Extensions;
 using MantraUML.Application.Dtos;
 using MantraUML.Application.Interfaces;
@@ -14,11 +16,14 @@ public class ProjectController : ControllerBase
 {
     private readonly IProjectService _projectService;
     private readonly IDiagramService _diagramService;
+    private readonly IDiagramTypeService _diagramTypeService;
 
-    public ProjectController(IProjectService projectService, IDiagramService diagramService)
+    public ProjectController(IProjectService projectService, IDiagramService diagramService,
+        IDiagramTypeService diagramTypeService)
     {
         _projectService = projectService;
         _diagramService = diagramService;
+        _diagramTypeService = diagramTypeService;
     }
 
     [HttpGet]
@@ -49,6 +54,12 @@ public class ProjectController : ControllerBase
     {
         var userId = User.GetUserId();
         return Ok(await _projectService.UpdateProjectNameByIdAndUserId(id, userId, request));
+    }
+
+    [HttpGet("diagrams/diagram-types")]
+    public async Task<ActionResult<List<DiagramTypeResponse>>> GetDiagramTypes()
+    {
+        return Ok(await _diagramTypeService.GetAllAsync());
     }
 
     [HttpGet("diagrams/{diagramId}")]

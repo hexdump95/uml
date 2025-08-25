@@ -25,6 +25,8 @@ builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IDiagramRepository, DiagramRepository>();
 builder.Services.AddScoped<IDiagramService, DiagramService>();
+builder.Services.AddScoped<IDiagramTypeRepository, DiagramTypeRepository>();
+builder.Services.AddScoped<IDiagramTypeService, DiagramTypeService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile(typeof(AutoMapperProfile)));
