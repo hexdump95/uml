@@ -34,10 +34,11 @@ public class ProjectController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<IEnumerable<ProjectResponse>>> GetProjectById(Guid id)
+    public async Task<ActionResult<ProjectWithDiagramsResponse>> GetProjectById(Guid id)
     {
         var userId = User.GetUserId();
-        return Ok(await _projectService.FindOneByIdAndUserId(id, userId));
+        var project = await _projectService.FindOneWithDiagramsByIdAndUserId(id, userId);
+        return Ok(project);
     }
 
     [HttpPost]
@@ -45,7 +46,7 @@ public class ProjectController : ControllerBase
     {
         var userId = User.GetUserId();
         var projectResponse = await _projectService.CreateProject(request, userId);
-        return CreatedAtAction(nameof(GetProjectById), new { id = projectResponse.Id }, projectResponse);
+        return Created("", projectResponse);
     }
 
     [HttpPatch("{id}")]
@@ -67,14 +68,6 @@ public class ProjectController : ControllerBase
     {
         var userId = User.GetUserId();
         return Ok(await _diagramService.FindOneByIdAndUserId(diagramId, userId));
-    }
-
-    [HttpGet("{projectId}/diagrams")]
-    public async Task<ActionResult<IEnumerable<ProjectWithDiagramsResponse>>> GetProjectWithDiagrams(Guid projectId)
-    {
-        var userId = User.GetUserId();
-        var project = await _projectService.FindOneWithDiagramsByIdAndUserId(projectId, userId);
-        return Ok(project);
     }
 
     [HttpPost("{projectId}/diagrams")]
